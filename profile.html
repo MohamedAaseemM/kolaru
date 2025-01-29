@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M Mohamed Aaseem - Portfolio</title>
+    <style>
+        /* General Styles */
+        /* General Styles */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    scroll-behavior: smooth; 
+    font-family: 'Poppins', sans-serif;
+}
+
+body { 
+    background: #0a0a0a; 
+    color: white; 
+    line-height: 1.6; 
+}
+/* About Section */
+#about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    background: #1a1a1a;
+    color: white;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    max-width: 1100px;
+    width: 90%;
+    gap: 50px;
+}
+
+/* About Text */
+.about-text {
+    flex: 1;
+    text-align: left;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #0dcaf0;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* About Photo */
+.about-photo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-photo img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #0dcaf0;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0px 0px 20px rgba(255, 255, 255, 0.3);
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.about-photo img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.7),
+                inset 0px 0px 25px rgba(255, 255, 255, 0.4);
+}
+
+/* Header Styling */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(34, 34, 34, 0.7);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0dcaf0;
+    text-shadow: 0px 0px 10px rgba(13, 202, 240, 0.7);
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Neon Glow Effect on Hover */
+.nav-links a:hover {
+    color: #0dcaf0;
+}
+
+/* Underline Animation */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #0dcaf0;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Sticky Navbar on Scroll */
+.scrolled {
+    background: rgba(34, 34, 34, 0.9);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 4px;
+    background: white;
+    margin: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(34, 34, 34, 0.9);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+        height: 100vh;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Toggle Menu Animation */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+/* Hero Section */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #20804a, #0c84c4);
+    overflow: hidden;
+}
+
+/* Glowing Background Effect */
+.hero-overlay::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(13, 202, 240, 0.6), transparent);
+    top: 10%;
+    left: 10%;
+    animation: moveGlow 6s infinite alternate ease-in-out;
+}
+
+.hero-overlay::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+    bottom: 10%;
+    right: 10%;
+    animation: moveGlow 6s infinite alternate-reverse ease-in-out;
+}
+
+/* Typing Effect */
+.typed-text {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0px 0px 10px rgba(245, 7, 7, 0.8);
+}
+
+/* Animated Cursor */
+.cursor {
+    font-size: 2.8rem;
+    color: #fff;
+    animation: blink 0.7s infinite;
+}
+
+/* Hero Content */
+.hero-content {
+    z-index: 1;
+    max-width: 800px;
+}
+
+/* CTA Button */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: #0dcaf0;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(13, 236, 240, 0.5);
+}
+
+.btn:hover {
+    background: #0077b6;
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(13, 202, 240, 0.8);
+}
+
+/* Animations */
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+@keyframes moveGlow {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(30px); }
+}
+
+
+/* Sections */
+section { 
+    padding: 100px 20px; 
+    text-align: center; 
+}
+
+/* Cards */
+.portfolio-container { 
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; 
+    flex-wrap: wrap; 
+}
+
+.card { 
+    background: #222; 
+    padding: 15px;
+    border-radius: 12px; 
+    transition: 0.3s; 
+    text-align: center; 
+    max-width: 300px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover { 
+    transform: scale(1.05); 
+    background: linear-gradient(135deg, #0dcaf0, #0077b6); 
+    color: white; 
+}
+
+.card img { 
+    width: 100%; 
+    border-radius: 8px; 
+}
+
+/* Skills Section */
+#skills {
+    padding: 100px 20px;
+    text-align: center;
+    background: #1a1a1a;
+    color: white;
+}
+
+#skills h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #0dcaf0;
+    text-shadow: 0px 0px 10px rgba(13, 202, 240, 0.8);
+}
+
+/* Skills Container */
+.skills-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Skill Cards */
+.skill-card {
+    background: rgba(34, 34, 34, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glowing Hover Effect */
+.skill-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 10px 25px rgba(13, 202, 240, 0.7);
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #0dcaf0, #0077b6);
+    border-radius: 5px;
+    transition: width 1.5s ease-in-out;
+}
+
+/* 3D Floating Effect */
+.skill-card::before {
+    content: "";
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(25deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.skill-card:hover::before {
+    transform: rotate(0deg) translate(50%, 50%);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .skills-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/* Contact Section */
+.contact-info { 
+    margin-top: 20px; 
+}
+
+.contact-info a { 
+    color: #0dcaf0; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: 0.3s;
+}
+
+.contact-info a:hover { 
+    color: #0077b6; 
+}
+
+/* Form */
+form { 
+    display: flex; 
+    flex-direction: column; 
+    max-width: 400px; 
+    margin: auto; 
+}
+
+input, textarea { 
+    margin: 10px 0; 
+    padding: 12px; 
+    border: none; 
+    border-radius: 5px; 
+    width: 100%; 
+    font-size: 1rem;
+}
+
+button { 
+    background: #0dcaf0; 
+    border: none; 
+    padding: 12px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    border-radius: 5px; 
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover { 
+    background: #0077b6; 
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer { 
+    text-align: center; 
+    padding: 20px; 
+    background: #222; 
+    margin-top: 20px; 
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">M Mohamed Aaseem</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    
+
+    <section id="hero">
+        <div class="hero-content">
+            <h2>Hi, I'm <span class="typed-text"></span><span class="cursor">|</span></h2>
+            <p>ECE Undergraduate | Embedded Systems Enthusiast</p>
+            <a href="#portfolio" class="btn">View My Work</a>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+    
+
+    <section id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>
+                    I am an enthusiastic Electronics and Communication Engineering undergraduate at SKCET, 
+                    passionate about embedded systems, microcontroller programming, and hardware-software integration.  
+                    My expertise includes circuit design, Arduino projects, and problem-solving in competitive coding.  
+                    Constantly learning and evolving, I aspire to contribute to cutting-edge technology and innovation.
+                </p>
+            </div>
+            <div class="about-photo">
+                <img src="your-photo.jpg" alt="M Mohamed Aaseem">
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="portfolio">
+        <h2 style="padding-bottom: 20px;">My Work</h2>
+        <div class="portfolio-container">
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?tech" alt="Gas Detection System">
+                <h3>Gas Detection System</h3>
+                <p>Built a safety-centric gas detection system using Arduino Uno, achieving over 90% accuracy in detecting hazardous gases.</p>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?code" alt="Problem-Solving & Hackathons">
+                <h3>Problem-Solving & Hackathons</h3>
+                <p>Proficient in DSA (C++), finalist in SheCodathon 2024, and selected for the Smart India Hackathon 2024.</p>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?code" alt="Problem-Solving & Hackathons">
+                <h3>Problem-Solving & Hackathons</h3>
+                <p>Proficient in DSA (C++), finalist in SheCodathon 2024, and selected for the Smart India Hackathon 2024.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3>Programming</h3>
+                <p>Python, C++, Java</p>
+                <div class="progress-bar"><div class="progress" data-progress="90"></div></div>
+            </div>
+            <div class="skill-card">
+                <h3>Embedded Systems</h3>
+                <p>Arduino, Verilog, Proteus</p>
+                <div class="progress-bar"><div class="progress" data-progress="85"></div></div>
+            </div>
+            <div class="skill-card">
+                <h3>Problem Solving</h3>
+                <p>DSA, Competitive Programming</p>
+                <div class="progress-bar"><div class="progress" data-progress="95"></div></div>
+            </div>
+            <div class="skill-card">
+                <h3>Web Development</h3>
+                <p>HTML, CSS, JavaScript</p>
+                <div class="progress-bar"><div class="progress" data-progress="80"></div></div>
+            </div>
+        </div>
+    </section>    
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:idforaaseem@gmail.com">idforaaseem@gmail.com</a></p>
+            <p>Phone: <a href="tel:+918825792971">+91 8825792971</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/m-mohamed-aaseem-5964a0290" target="_blank">m-mohamed-aaseem</a></p>
+        </div>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 M Mohamed Aaseem | Designed by Me</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+    });
+
+    window.addEventListener("scroll", () => {
+        document.querySelector("header").classList.toggle("scrolled", window.scrollY > 50);
+    });
+        // Typing Effect for Hero Section
+        const words = ["a Developer", "an Embedded Systems Enthusiast", "a Problem Solver"];
+        let wordIndex = 0, letterIndex = 0;
+        const typedText = document.querySelector(".typed-text");
+
+        function type() {
+            if (letterIndex < words[wordIndex].length) {
+                typedText.textContent += words[wordIndex][letterIndex];
+                letterIndex++;
+                setTimeout(type, 100);
+            } else {
+                setTimeout(erase, 1500);
+            }
+        }
+
+        function erase() {
+            if (letterIndex > 0) {
+                typedText.textContent = words[wordIndex].substring(0, letterIndex - 1);
+                letterIndex--;
+                setTimeout(erase, 100);
+            } else {
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(type, 500);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(type, 500);
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+        const progressBars = document.querySelectorAll(".progress");
+
+        function animateProgressBars() {
+            progressBars.forEach(bar => {
+                const value = bar.getAttribute("data-progress");
+                bar.style.width = value + "%";
+            });
+        }
+
+        // Trigger animation when the section is visible
+        const skillSection = document.querySelector("#skills");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgressBars();
+                    observer.unobserve(skillSection);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(skillSection);
+    });
+    </script>
+</body>
+</html>
